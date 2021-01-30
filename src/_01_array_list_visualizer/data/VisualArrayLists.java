@@ -1,4 +1,4 @@
-package _01_array_list_visualizer;
+package _01_array_list_visualizer.data;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
