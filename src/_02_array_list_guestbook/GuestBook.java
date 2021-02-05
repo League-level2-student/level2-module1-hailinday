@@ -2,9 +2,11 @@ package _02_array_list_guestbook;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GuestBook implements ActionListener {
@@ -22,23 +24,38 @@ public class GuestBook implements ActionListener {
 		guestBook.createGUI();
 
 
-}
+	}
 
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton button1 = new JButton();
+	JButton button2 = new JButton();
+	ArrayList<String> names = new ArrayList<String>();
+	
 	private void createGUI() {
 		// TODO Auto-generated method stub
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
-		JButton button1 = new JButton();
-		JButton button2 = new JButton();
+		frame.setVisible(true);
 		button1.setText("Add Name");
 		button2.setText("View Names");
 		button1.addActionListener(this);
 		button2.addActionListener(this);
+		frame.add(panel);
+		panel.add(button1);
+		panel.add(button2);
+		frame.pack();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		if (arg0.getSource() == button1) {
+			String user = JOptionPane.showInputDialog("Enter a name");
+			names.add(user);
+		} else {
+			for(int i = 0; i < names.size(); i++){
+				String s = names.get(i);
+				System.out.println("Guest #" + (i+1) + ": " + names.get(i));
+			}
+		}
 	}
 }
